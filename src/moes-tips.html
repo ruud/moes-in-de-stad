@@ -1,0 +1,21 @@
+<link rel="import" href="../bower_components/firebase-element/firebase-collection.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+
+<dom-module id="moes-tips">
+    <template>
+        <firebase-collection order-by-child="height" limit-to-first="3" location="https://dinosaur-facts.firebaseio.com/dinosaurs" data="{{dinosaurs}}"></firebase-collection>
+        <template is="dom-repeat" items="[[dinosaurs]]" as="dinosaur">
+          <paper-card heading="[[dinosaur.__firebaseKey__]]">
+            <div class="card-content">
+              Height:
+              <span>[[dinosaur.height]]</span>m
+            </div>
+          </paper-card>
+        </template>
+    </template>
+    <script>
+        // element registration
+        Polymer({is: "moes-tips"});
+    </script>
+
+</dom-module>
